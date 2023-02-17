@@ -37,7 +37,7 @@ jobs:
           file: ./Dockerfile
 
       - name: Deploy to kubeflow Pipelines
-        uses: NikeNano/kubeflow-pipeline-deploy-action@v0.2
+        uses: f6wbl6/kubeflow-pipeline-deploy-action@v0.2
         with:
           host: http://10.64.140.43/?ns=admin
           namespace: admin
