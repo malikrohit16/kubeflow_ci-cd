@@ -1,6 +1,6 @@
 From python:3.7-slim-buster
 
-RUN pip install kfp==1.6.2 kfp-server-api==1.6.2
+RUN pip install kfp kfp-server-api
 
 WORKDIR /app
 COPY . .
