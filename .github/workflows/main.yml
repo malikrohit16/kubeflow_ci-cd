@@ -10,14 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v2
 
       - name: Build and push container image
         id: docker_build
-        uses: docker/build-push-actions@v2
+        uses: docker/build-push-actions@v4
         with:
           push: true
           tags: docker.pkg.github.com/malikrohit16/kubeflow_ci-cd/train:latest
@@ -25,7 +25,7 @@ jobs:
           file: ./Dockerfile
 
       - name: Deploy to kubeflow Pipelines
-        uses: d-kuro/kubeflow-pipeline-deploy-action@v0.2
+        uses: d-kuro/kubeflow-pipeline-deploy-action@v0.3
         with:
           host: http://10.64.140.43/?ns=admin
           namespace: admin

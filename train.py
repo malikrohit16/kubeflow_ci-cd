@@ -3,7 +3,7 @@ from kfp.components import func_to_container_op
 
 
 def train():
-    print("Trainig model....")
+    print("Training model....")
 
 train_op = func_to_container_op(train)
 
