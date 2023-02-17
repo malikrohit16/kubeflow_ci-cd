@@ -19,13 +19,13 @@ jobs:
         uses: docker/login-action@v2
         with:
           username: malikrohit16
-          password: dckr_pat_mN-_7AL1Ulg64-YM3FB82QFzY2U
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: malikrohit16
-          password: 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
+          password: ${{ secrets.G_TOKEN }}
 
       - name: Build and push container image
         id: docker_build
