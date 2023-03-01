@@ -17,7 +17,7 @@ jobs:
 
       - name: push image to docker registry
         run: |
-          echo registrypassword | docker login --username rohit16 --password-stdin localhost:5000
+          echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username "$DOCKER_REGISTRY_USERNAME" --password-stdin localhost:5000
           docker push localhost:5000/image1
 
       # - name: Set up Docker Buildx
