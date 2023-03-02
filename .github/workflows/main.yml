@@ -31,10 +31,14 @@ jobs:
           context: .
           file: ./Dockerfile
 
-      - name: Run to kubeflow Pipelines
+      - name: Run kubeflow Pipelines
         uses: NikeNano/kubeflow-github-action@master
         with:
-          host: http://10.64.140.43/?ns=admin
-          namespace: admin
-          pipeline: train-pipeline
-          image: malikrohit16/image1:latest
+          KUBEFLOW_URL: http://10.64.140.43/?ns=admin
+          PIPELINE_CODE_PATH: "train.py"
+          EXPERIMENT_NAME: "Default"
+          RUN_PIPELINE: True
+          # host: http://10.64.140.43/?ns=admin
+          # namespace: admin
+          # pipeline: train-pipeline
+          # image: malikrohit16/image1:latest
