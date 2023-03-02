@@ -31,41 +31,10 @@ jobs:
           context: .
           file: ./Dockerfile
 
-      - name: Deploy to kubeflow Pipelines
-        uses: f6wbl6/kubeflow-pipelines-deploy-action@master
+      - name: Run to kubeflow Pipelines
+        uses: NikeNano/kubeflow-github-action@master
         with:
           host: http://10.64.140.43/?ns=admin
           namespace: admin
-          name: train-pipeline
+          pipeline: train-pipeline
           image: malikrohit16/image1:latest
-
-      # - name: Build Docker Image
-      #   run: docker build -t 10.4.29.236:5000/image1 .
-
-      # - name: push image to docker registry
-      #   env:
-      #     DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
-      #     DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-      #   run: |
-      #     echo "$DOCKER_REGISTRY_PASSWORD" | docker login --username "$DOCKER_REGISTRY_USERNAME" --password-stdin 10.4.29.236:5000
-      #     docker push 10.4.29.236:5000/image1
-
-      # - name: Login to GitHub Container Registry
-      #   uses: docker/login-action@v2
-      #   with:
-      #     registry: ghcr.io
-      #     username: malikrohit16
-      #     password: ${{ secrets.G_TOKEN }}
-
-      # - name: Build and push Docker image
-      #   run: |
-      #     docker build -t localhost:5000/kubeflow_image_test:latest .
-      #     docker push localhost:5000/kubeflow_image_test:latest
-
-      # - name: Run Kubeflow pipeline
-      #   env:
-      #     KFP_ENDPOINT: http://10.64.140.43/?ns=admin
-      #     KFP_AUTH_TOKEN: ${{ secrets.KFP_AUTH_TOKEN }}
-      #     KUBECONFIG: ${{ secrets.KUBECONFIG }}
-      #   run: |
-      #     python train.py
