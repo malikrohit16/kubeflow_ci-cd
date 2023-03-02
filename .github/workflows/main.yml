@@ -31,6 +31,14 @@ jobs:
           context: .
           file: ./Dockerfile
 
+      - name: Deploy to kubeflow Pipelines
+        uses: f6wbl6/kubeflow-pipelines-deploy-action@master
+        with:
+          host: http://10.64.140.43/?ns=admin
+          namespace: admin
+          name: train-pipeline
+          image: malikrohit16/image1:latest
+
       # - name: Build Docker Image
       #   run: docker build -t 10.4.29.236:5000/image1 .
 
@@ -48,14 +56,6 @@ jobs:
       #     registry: ghcr.io
       #     username: malikrohit16
       #     password: ${{ secrets.G_TOKEN }}
-
-      # - name: Deploy to kubeflow Pipelines
-      #   uses: f6wbl6/kubeflow-pipelines-deploy-action@master
-      #   with:
-      #     host: http://10.64.140.43/?ns=admin
-      #     namespace: admin
-      #     name: train-pipeline
-      #     image: docker.pkg.github.com/malikrohit16/kubeflow_ci-cd/train:latest
 
       # - name: Build and push Docker image
       #   run: |
